@@ -1,5 +1,6 @@
 ### Which object are we building?
 name ?= $(firstword $(MAKECMDGOALS))
+in ?= $(shell ls | grep -i $(name). | grep -P "txt|xml")
 
 ifeq ($(name),)
 name := abrev
@@ -13,7 +14,7 @@ endif
 $(name):
 	flex --o $(name).yy.c $(name).l
 	gcc -Wall -Wextra -o $(name) $(name).yy.c
-	./$(name) < $(shell ls | grep -i $(name). | grep -P "txt|xml")
+	./$(name) < $(in)
 
 ### Other targets
 
