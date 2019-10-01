@@ -8,4 +8,9 @@ ele: eu chamo-me Beltrão Coelho e estou muito bem.
 e qual o seu nome?
 EU: Pedro um seu criado! Ele é o Zezinho.
 ELE: Ah ok muito bem. Prazer Zezinho, eu não o conhecia.
+
+EU=António.
+ELE=Zezinho.
+
 eu: vamos então começar a entrevista que ele quer começar a filmar.
+ELE: Por mim estou pronto, pode começar.
