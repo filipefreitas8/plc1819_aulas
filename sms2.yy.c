@@ -1,6 +1,6 @@
-#line 2 "sms.yy.c"
+#line 2 "sms2.yy.c"
 
-#line 4 "sms.yy.c"
+#line 4 "sms2.yy.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -352,8 +352,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 3
-#define YY_END_OF_BUFFER 4
+#define YY_NUM_RULES 8
+#define YY_END_OF_BUFFER 9
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -361,10 +361,11 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[12] =
+static const flex_int16_t yy_accept[25] =
     {   0,
-        0,    0,    4,    2,    2,    0,    0,    0,    0,    1,
-        0
+        0,    0,    0,    0,    0,    0,    0,    0,    9,    7,
+        1,    6,    8,    2,    3,    4,    5,    1,    1,    2,
+        3,    4,    5,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -373,8 +374,8 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    3,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    4,    1,    1,    1,    1,    1,    5,    5,    5,
-        5,    5,    5,    5,    5,    5,    5,    1,    1,    1,
+        1,    4,    5,    1,    1,    1,    1,    6,    6,    6,
+        6,    6,    6,    6,    6,    6,    6,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -399,33 +400,39 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static const YY_CHAR yy_meta[6] =
+static const YY_CHAR yy_meta[7] =
     {   0,
-        1,    1,    1,    1,    2
+        1,    1,    2,    1,    1,    3
     } ;
 
-static const flex_int16_t yy_base[14] =
+static const flex_int16_t yy_base[31] =
     {   0,
-        8,    7,   11,   14,    0,    2,    3,    0,    0,    0,
-       14,    8,    0
+       18,   17,    0,    0,    3,    0,   16,   15,   20,   25,
+        7,   25,   25,    0,    0,    0,    0,    0,    0,    0,
+        0,    0,    0,   25,   13,   17,   16,   14,    9,    9
     } ;
 
-static const flex_int16_t yy_def[14] =
+static const flex_int16_t yy_def[31] =
     {   0,
-       12,   12,   11,   11,   11,    5,   11,    5,    7,   13,
-        0,   11,   11
+       25,   25,   24,    3,    3,    5,    5,    5,   24,   24,
+       24,   24,   24,   26,   27,   28,   29,   30,   11,   26,
+       27,   28,   29,    0,   24,   24,   24,   24,   24,   24
     } ;
 
-static const flex_int16_t yy_nxt[20] =
+static const flex_int16_t yy_nxt[32] =
     {   0,
-       11,   10,    6,    7,    8,    9,   11,   10,    4,    4,
-       11,    5,    5,    3,   11,   11,   11,   11,   11
+       12,   13,   12,   14,   15,   12,   12,   12,   16,   18,
+       18,   23,   19,   10,   10,   10,   22,   21,   20,   24,
+       17,   17,   11,   11,    9,   24,   24,   24,   24,   24,
+       24
     } ;
 
-static const flex_int16_t yy_chk[20] =
+static const flex_int16_t yy_chk[32] =
     {   0,
-        0,   13,    5,    5,    5,    7,    6,    7,   12,   12,
-        3,    2,    1,   11,   11,   11,   11,   11,   11
+        3,    3,    3,    3,    3,    3,    5,    5,    5,   11,
+       30,   29,   11,   25,   25,   25,   28,   27,   26,    9,
+        8,    7,    2,    1,   24,   24,   24,   24,   24,   24,
+       24
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -442,16 +449,21 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "sms.l"
-#line 2 "sms.l"
+#line 1 "sms2.l"
+#line 2 "sms2.l"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-int soma = 0;
-#line 452 "sms.yy.c"
-#line 453 "sms.yy.c"
+
+int x1, x2;
+#line 460 "sms2.yy.c"
+
+#line 462 "sms2.yy.c"
 
 #define INITIAL 0
+#define NUM 1
+#define MULT 2
+#define ADD 3
 
 #ifndef YY_NO_UNISTD_H
 /* Special case for "unistd.h", since it is non-ANSI. We include it way
@@ -666,13 +678,12 @@ YY_DECL
 		}
 
 	{
-#line 8 "sms.l"
+#line 11 "sms2.l"
 
-#line 10 "sms.l"
-    // [2][0-9]{8} {printf("%s\n", yytext);}
-    // [9][1236][0-9]{7} {printf("%s\n", yytext);}
-    // [0-9]+ {soma += atoi(yytext);}
-#line 676 "sms.yy.c"
+#line 13 "sms2.l"
+	// <NUM>. { BEGIN INITIAL; }
+	// <MULT>. { BEGIN INITIAL; }
+#line 687 "sms2.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -699,13 +710,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 12 )
+				if ( yy_current_state >= 25 )
 					yy_c = yy_meta[yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 14 );
+		while ( yy_base[yy_current_state] != 25 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -731,26 +742,50 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 13 "sms.l"
-{
-    int x1, x2;
-    sscanf(yytext, "%d * %d", &x1, &x2);
-    printf("Detetada multiplicação de %d e %d = %d\n", x1, x2, x1*x2);
-}
+#line 15 "sms2.l"
+{ x1 = atoi(yytext); BEGIN NUM; }
 	YY_BREAK
 case 2:
-/* rule 2 can match eol */
 YY_RULE_SETUP
-#line 18 "sms.l"
-
+#line 16 "sms2.l"
+{ BEGIN MULT; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 19 "sms.l"
+#line 17 "sms2.l"
+{ BEGIN ADD; }
+	YY_BREAK
+case 4:
+YY_RULE_SETUP
+#line 18 "sms2.l"
+{ x2 = atoi(yytext); printf("m= %d\n", x1 * x2); BEGIN INITIAL; }
+	YY_BREAK
+case 5:
+YY_RULE_SETUP
+#line 19 "sms2.l"
+{ x2 = atoi(yytext); printf("a= %d\n", x1 + x2); BEGIN INITIAL; }
+	YY_BREAK
+case 6:
+YY_RULE_SETUP
+#line 20 "sms2.l"
+{ BEGIN INITIAL; }
+	YY_BREAK
+case 7:
+/* rule 7 can match eol */
+YY_RULE_SETUP
+#line 21 "sms2.l"
+
+	YY_BREAK
+case 8:
+YY_RULE_SETUP
+#line 22 "sms2.l"
 ECHO;
 	YY_BREAK
-#line 753 "sms.yy.c"
+#line 785 "sms2.yy.c"
 case YY_STATE_EOF(INITIAL):
+case YY_STATE_EOF(NUM):
+case YY_STATE_EOF(MULT):
+case YY_STATE_EOF(ADD):
 	yyterminate();
 
 	case YY_END_OF_BUFFER:
@@ -1046,7 +1081,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 12 )
+			if ( yy_current_state >= 25 )
 				yy_c = yy_meta[yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -1074,11 +1109,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 12 )
+		if ( yy_current_state >= 25 )
 			yy_c = yy_meta[yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
-	yy_is_jam = (yy_current_state == 11);
+	yy_is_jam = (yy_current_state == 24);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1754,7 +1789,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 19 "sms.l"
+#line 22 "sms2.l"
 
 
 int yywrap() {
@@ -1763,6 +1798,5 @@ int yywrap() {
 
 int main() {
     yylex();
-    printf("Soma: %d\n", soma);
     return 0;
 }
