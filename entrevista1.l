@@ -2,15 +2,22 @@
 
 char nomeEntrevistador[512];
 char nomeEntrevistado[512];
+
 %}
 
+%x EU ELE
+
 %%
-^(?i:eu)=.+\. {
-    yytext[yyleng - 1] = '\0';
-    strcpy(nomeEntrevistador, yytext + 3);
-}
-^(?i:eu)\ *: { printf(" %s: ", nomeEntrevistador); }
-^(?i:ele)\ *: { printf(" - "); }
+^(?i:eu)\ *=[ \t\n]* { BEGIN EU; }
+^(?i:ele)\ *=[ \t\n]* { BEGIN ELE; }
+
+<EU>[^.]* { strcpy(nomeEntrevistador, yytext); }
+<ELE>[^.]* { strcpy(nomeEntrevistado, yytext); }
+
+<EU,ELE>\. { BEGIN INITIAL; }
+
+^(?i:eu)\ *: { printf("%s: ", nomeEntrevistador); }
+^(?i:ele)\ *: { printf("%s: ", nomeEntrevistado); }
 %%
 
 int yywrap() {

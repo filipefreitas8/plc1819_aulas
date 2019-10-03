@@ -1,6 +1,6 @@
-#line 2 "entrevista1.yy.c"
+#line 2 "maiuscula.yy.c"
 
-#line 4 "entrevista1.yy.c"
+#line 4 "maiuscula.yy.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -352,8 +352,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 8
-#define YY_END_OF_BUFFER 9
+#define YY_NUM_RULES 3
+#define YY_END_OF_BUFFER 4
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -361,29 +361,28 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[27] =
+static const flex_int16_t yy_accept[12] =
     {   0,
-        0,    0,    3,    3,    4,    4,    9,    8,    8,    3,
-        5,    4,    0,    0,    3,    4,    0,    0,    6,    1,
-        0,    7,    2,    1,    2,    0
+        0,    0,    0,    0,    4,    3,    3,    2,    1,    0,
+        0
     } ;
 
 static const YY_CHAR yy_ec[256] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    2,    2,
+        1,    1,    2,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    2,    3,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    3,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    3,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    3,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    4,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    5,    1,    1,
-        6,    1,    1,    1,    1,    1,    1,    1,    7,    1,
-        1,    1,    1,    1,    1,    8,    1,    1,    1,    1,
-        1,    1,    1,    1,    9,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    4,    4,    4,    4,
 
-       10,    1,    1,    1,    1,    1,    1,   11,    1,    1,
-        1,    1,    1,    1,    1,    1,   12,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        4,    4,    4,    4,    4,    4,    4,    4,    4,    4,
+        4,    4,    4,    4,    4,    4,    4,    4,    4,    4,
+        4,    4,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -400,46 +399,33 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static const YY_CHAR yy_meta[13] =
+static const YY_CHAR yy_meta[5] =
     {   0,
-        1,    2,    2,    3,    1,    1,    1,    1,    1,    1,
-        1,    1
+        1,    2,    1,    1
     } ;
 
-static const flex_int16_t yy_base[34] =
+static const flex_int16_t yy_base[14] =
     {   0,
-        0,    0,    5,    4,    2,    1,    4,   41,    3,    0,
-       41,    0,    9,   17,    0,    0,   21,    0,   41,    0,
-        0,   41,    0,    0,    0,   41,   27,   30,   33,   36,
-       38,    1,    0
+        7,    6,    4,    0,    7,   11,    0,   11,    0,    0,
+       11,    3,    4
     } ;
 
-static const flex_int16_t yy_def[34] =
+static const flex_int16_t yy_def[14] =
     {   0,
-       27,   27,   28,   28,   29,   29,   26,   26,   26,   30,
-       26,   31,   26,   26,   30,   31,   26,   14,   26,   32,
-       17,   26,   33,   32,   33,    0,   26,   26,   26,   26,
-       26,   26,   26
+       12,   12,   12,    3,   11,   11,   11,   11,   13,    7,
+        0,   11,   11
     } ;
 
-static const flex_int16_t yy_nxt[54] =
+static const flex_int16_t yy_nxt[16] =
     {   0,
-       26,   25,   24,   26,   11,   11,    9,   11,   11,    9,
-       13,   14,   26,   13,   14,   17,   26,   26,   17,   18,
-       26,   19,   20,   21,   26,   22,   23,    8,    8,    8,
-       10,   10,   10,   12,   12,   12,   15,   15,   16,   16,
-        7,   26,   26,   26,   26,   26,   26,   26,   26,   26,
-       26,   26,   26
+       11,    9,   10,    6,    6,    9,   11,    8,    7,    7,
+        5,   11,   11,   11,   11
     } ;
 
-static const flex_int16_t yy_chk[54] =
+static const flex_int16_t yy_chk[16] =
     {   0,
-        0,   33,   32,    7,    6,    5,    2,    4,    3,    2,
-        9,    9,    0,    9,    9,   13,    0,    0,   13,   14,
-        0,   14,   14,   17,    0,   17,   17,   27,   27,   27,
-       28,   28,   28,   29,   29,   29,   30,   30,   31,   31,
-       26,   26,   26,   26,   26,   26,   26,   26,   26,   26,
-       26,   26,   26
+        0,    7,    7,   12,   12,   13,    5,    3,    2,    1,
+       11,   11,   11,   11,   11
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -456,19 +442,14 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "entrevista1.l"
-#line 2 "entrevista1.l"
+#line 1 "maiuscula.l"
+#line 2 "maiuscula.l"
+#line 448 "maiuscula.yy.c"
 
-char nomeEntrevistador[512];
-char nomeEntrevistado[512];
-
-#line 466 "entrevista1.yy.c"
-
-#line 468 "entrevista1.yy.c"
+#line 450 "maiuscula.yy.c"
 
 #define INITIAL 0
-#define EU 1
-#define ELE 2
+#define MAIUSCULA 1
 
 #ifndef YY_NO_UNISTD_H
 /* Special case for "unistd.h", since it is non-ANSI. We include it way
@@ -646,9 +627,6 @@ extern int yylex (void);
 #endif
 
 #define YY_RULE_SETUP \
-	if ( yyleng > 0 ) \
-		YY_CURRENT_BUFFER_LVALUE->yy_at_bol = \
-				(yytext[yyleng - 1] == '\n'); \
 	YY_USER_ACTION
 
 /** The main scanner function which does all the work.
@@ -686,9 +664,9 @@ YY_DECL
 		}
 
 	{
-#line 10 "entrevista1.l"
+#line 6 "maiuscula.l"
 
-#line 692 "entrevista1.yy.c"
+#line 670 "maiuscula.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -703,7 +681,6 @@ YY_DECL
 		yy_bp = yy_cp;
 
 		yy_current_state = (yy_start);
-		yy_current_state += YY_AT_BOL();
 yy_match:
 		do
 			{
@@ -716,13 +693,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 27 )
+				if ( yy_current_state >= 12 )
 					yy_c = yy_meta[yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 41 );
+		while ( yy_base[yy_current_state] != 11 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -749,51 +726,22 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 11 "entrevista1.l"
-{ BEGIN EU; }
+#line 7 "maiuscula.l"
+{ printf("%s", yytext); BEGIN MAIUSCULA; }
 	YY_BREAK
 case 2:
-/* rule 2 can match eol */
 YY_RULE_SETUP
-#line 12 "entrevista1.l"
-{ BEGIN ELE; }
+#line 9 "maiuscula.l"
+{ printf("%c", (char) toupper(yytext[0])); BEGIN INITIAL; }
 	YY_BREAK
 case 3:
-/* rule 3 can match eol */
 YY_RULE_SETUP
-#line 14 "entrevista1.l"
-{ strcpy(nomeEntrevistador, yytext); }
-	YY_BREAK
-case 4:
-/* rule 4 can match eol */
-YY_RULE_SETUP
-#line 15 "entrevista1.l"
-{ strcpy(nomeEntrevistado, yytext); }
-	YY_BREAK
-case 5:
-YY_RULE_SETUP
-#line 17 "entrevista1.l"
-{ BEGIN INITIAL; }
-	YY_BREAK
-case 6:
-YY_RULE_SETUP
-#line 19 "entrevista1.l"
-{ printf("%s: ", nomeEntrevistador); }
-	YY_BREAK
-case 7:
-YY_RULE_SETUP
-#line 20 "entrevista1.l"
-{ printf("%s: ", nomeEntrevistado); }
-	YY_BREAK
-case 8:
-YY_RULE_SETUP
-#line 21 "entrevista1.l"
+#line 10 "maiuscula.l"
 ECHO;
 	YY_BREAK
-#line 794 "entrevista1.yy.c"
+#line 743 "maiuscula.yy.c"
 case YY_STATE_EOF(INITIAL):
-case YY_STATE_EOF(EU):
-case YY_STATE_EOF(ELE):
+case YY_STATE_EOF(MAIUSCULA):
 	yyterminate();
 
 	case YY_END_OF_BUFFER:
@@ -1077,7 +1025,6 @@ static int yy_get_next_buffer (void)
 	char *yy_cp;
     
 	yy_current_state = (yy_start);
-	yy_current_state += YY_AT_BOL();
 
 	for ( yy_cp = (yytext_ptr) + YY_MORE_ADJ; yy_cp < (yy_c_buf_p); ++yy_cp )
 		{
@@ -1090,7 +1037,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 27 )
+			if ( yy_current_state >= 12 )
 				yy_c = yy_meta[yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -1118,11 +1065,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 27 )
+		if ( yy_current_state >= 12 )
 			yy_c = yy_meta[yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
-	yy_is_jam = (yy_current_state == 26);
+	yy_is_jam = (yy_current_state == 11);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1237,8 +1184,6 @@ static int yy_get_next_buffer (void)
 	c = *(unsigned char *) (yy_c_buf_p);	/* cast for 8-bit char's */
 	*(yy_c_buf_p) = '\0';	/* preserve yytext */
 	(yy_hold_char) = *++(yy_c_buf_p);
-
-	YY_CURRENT_BUFFER_LVALUE->yy_at_bol = (c == '\n');
 
 	return c;
 }
@@ -1800,7 +1745,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 21 "entrevista1.l"
+#line 10 "maiuscula.l"
 
 
 int yywrap() {
@@ -1811,3 +1756,4 @@ int main() {
     yylex();
     return 0;
 }
+
