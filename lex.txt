@@ -1,0 +1,10 @@
+int main()
+{
+    yylex();
+    return 0;
+}
+
+float dobro(float x)
+{
+    return 2*x;
+}
