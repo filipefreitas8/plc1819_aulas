@@ -1,5 +1,8 @@
 # Prerequisites
 *.d
+*.yy.c
+*.tab.c
+*.tab.h
 
 # Object files
 *.o
