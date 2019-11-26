@@ -47,7 +47,7 @@ Ponto 		: inteiro { soma += $1; }
 
 %%
 
-#include "lex.yy.c"
+#include "familia.yy.c"
 
 void yyerror(char *s) {
 	printf("%s\n", s);
