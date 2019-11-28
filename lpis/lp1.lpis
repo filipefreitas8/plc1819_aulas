@@ -1,0 +1,5 @@
+base : Inteiro
+expoente : Inteiro
+res = 1 : Inteiro
+;
+.

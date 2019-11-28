@@ -1,0 +1,13 @@
+LPIS - Linguagem de Programação Imperativa Simples
+
+Versão 1.0
+    Utilizam:
+        - Atribuições
+        - Ciclos
+        - IO
+        - Condicionais
+        
+        
+        Expressões (Booleanas?)
+
+
