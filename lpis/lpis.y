@@ -26,32 +26,30 @@ char *codigo;
 %type <numero>Tipo
 
 %%
-Programa        : DCLVariaveis Instrucoes { printf("%s START\n %s STOP\n", $1, $2); }
+Programa        : DCLVariaveis ';' Instrucoes '.' { printf("%s%s%s%s", $1, "START\n", $3, "STOP\n"); }
                 ;
 
-DCLVariaveis    : DCLVariaveis DCLVariavel { asprintf($$, "%s %s", $1, $2); }
-                | ';'
+DCLVariaveis    : DCLVariaveis DCLVariavel { asprintf(&$$, "%s%s", $1, $2); }
+                | DCLVariavel { $$ = $1; }
                 ;
 
-DCLVariavel     : id ValorInicial ':' Tipo { asprintf($$, "%s", $2); }
+DCLVariavel     : id ValorInicial ':' Tipo { asprintf(&$$, "%s", $2); }
                 ;
 
-ValorInicial    : '=' num { asprintf($$, "PUSHI %d\n", $2); }
-                |         { asprintf($$, "PUSHI 0\n"); }
+ValorInicial    : '=' num { asprintf(&$$, "PUSHI %d\n", $2); }
+                | { asprintf(&$$, "PUSHI 0\n"); }
                 ;
 
 Tipo            : INTEIRO { $$ = TIPO_INTEIRO; }
                 ;
 
-Instrucoes      : Instrucoes Instrucao { asprintf($$, "%s %s", $1, $2); }
+Instrucoes      : Instrucoes Instrucao { asprintf(&$$, "%s%s", $1, $2); }
                 | Instrucao { $$ = $1; }
                 ;
 
 Instrucao       : { $$ = ""; }
                 ; 
 %%
-
-#include "lpis.yy.c"
 
 int main() {
     yyparse();
