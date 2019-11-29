@@ -8,7 +8,7 @@ Ex: make abrev --> Compila o abrev.l, e corre o programa resultante com entrada 
 
 > bash $ flex abrev.l
 
-> bash $ gcc -o abrev abrev.yy.c
+> bash $ gcc -o abrev lex.yy.c
 
 > bash $ ./abrev < abrev.txt
 
