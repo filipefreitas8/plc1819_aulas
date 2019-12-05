@@ -1,10 +1,9 @@
-base = 50 : Inteiro
+base      : Inteiro
 expoente  : Inteiro
 res = 1   : Inteiro
 soma = 25 : Inteiro
 conta = 0 : Inteiro
 ;
-ler(soma)
-escrever(expoente)
-escrever(res)
+base = res + soma
+escrever(base)
 .
