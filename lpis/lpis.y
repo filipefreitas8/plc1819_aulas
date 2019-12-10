@@ -14,6 +14,8 @@ void yyerror(char*);
 int symbolTable[26];
 
 int proxAddress = 0;
+
+int proxIfName = 0;
 %}
 
 %union { int numero; char *texto; }
@@ -21,7 +23,7 @@ int proxAddress = 0;
 %token <texto>id
 %token <numero>num
 
-%token INTEIRO ERRO LER ESCREVER
+%token INTEIRO ERRO LER ESCREVER SE ENTAO SENAO FSE
 
 %type <texto>Programa
 %type <texto>DCLVariaveis
@@ -32,7 +34,9 @@ int proxAddress = 0;
 %type <texto>Input
 %type <texto>Output
 %type <texto>Atribuicao
+%type <texto>Se
 
+%type <texto>ExpB
 %type <texto>Exp
 %type <texto>Termo
 %type <texto>Fator
@@ -74,6 +78,7 @@ Instrucoes      : Instrucoes Instrucao { asprintf(&$$, "%s%s", $1, $2); }
 Instrucao       : Input { $$ = $1; }
                 | Output { $$ = $1; }
                 | Atribuicao { $$ = $1; }
+                | Se { $$ = $1; }
                 ; 
 
 Input           : LER '(' id ')' {
@@ -85,10 +90,10 @@ Input           : LER '(' id ')' {
     }
 }
 
-Output          : ESCREVER '(' Exp ')' { asprintf(&$$, "%sWRITEI\n", $3); }
+Output          : ESCREVER '(' ExpB ')' { asprintf(&$$, "%sWRITEI\n", $3); }
                 ;
 
-Atribuicao      : id '=' Exp {
+Atribuicao      : id '=' ExpB {
     if(symbolTable[$1[0] - 'A'] == -1) {
         fprintf(stderr, "[Atribuicao] A variável %s não foi declarada!\n", $1);
         exit(-1);
@@ -97,13 +102,26 @@ Atribuicao      : id '=' Exp {
     }
 }
 
-Exp             : Termo { $$ = $1; }
+Se              : SE '(' ExpB ')' ENTAO Instrucoes FSE { asprintf(&$$, "%sJZ FSE%d\n%FSE%d\: NOP\n", $3, proxIfName, $6, proxIfName); proxIfName++; }
+                | SE '(' ExpB ')' ENTAO Instrucoes SENAO Instrucoes FSE { asprintf(&$$, "%sJZ SENAO%d\n%sJUMP FSE%d\nSENAO%d\: NOP\n%sFSE%d\: NOP\n", $3, proxIfName, $6, proxIfName, proxIfName, $8, proxIfName); proxIfName++; }
+                ;
+
+ExpB            : Exp             { $$ = $1; }
+                | Exp '=' '=' Exp { asprintf(&$$, "%s%sEQUAL\n", $1, $4); } // Deixa no topo da pilha o valor 1 sse $1 == $2
+                | Exp '!' '=' Exp { asprintf(&$$, "%s%sEQUAL\nNOT\N", $1, $4); } // Deixa no topo da pilha o valor 1 sse $1 != $2
+                | Exp '>' Exp     { asprintf(&$$, "%s%sSUP\n", $1, $3); } // $1 > $3
+                | Exp '<' Exp     { asprintf(&$$, "%s%sINF\n", $1, $3); } // $1 < $3
+                | Exp '>' '=' Exp { asprintf(&$$, "%s%sSUPEQ\n", $1, $4); } // $1 >= $4
+                | Exp '<' '=' Exp { asprintf(&$$, "%s%sINFEQ\n", $1, $4); } // $1 <= $4
+                ;
+
+Exp             : Termo         { $$ = $1; }
                 | Exp '+' Termo { asprintf(&$$, "%s%sADD\n", $1, $3);  }
                 | Exp '-' Termo { asprintf(&$$, "%s%sSUB\n", $1, $3);  }
                 | Exp '|' Termo { asprintf(&$$, "%s%sADD\n", $1, $3); }
                 ;
 
-Termo           : Fator { $$ = $1; }
+Termo           : Fator           { $$ = $1; }
                 | Termo '*' Fator { asprintf(&$$, "%s%sMUL\n", $1, $3);  }
                 | Termo '/' Fator { asprintf(&$$, "%s%sDIV\n", $1, $3);  }
                 | Termo '&' Fator { asprintf(&$$, "%s%sMUL\n", $1, $3); }
@@ -111,7 +129,7 @@ Termo           : Fator { $$ = $1; }
 
 Fator           : Constante { $$ = $1; }
                 | Variavel { $$ = $1; }
-                | '(' Exp ')' { $$ = $2; }
+                | '(' ExpB ')' { $$ = $2; }
                 ;
 
 
@@ -140,5 +158,3 @@ int main() {
 void yyerror(char *erro) {
     fprintf(stderr, "%s, %s, %d\n", erro, yytext, yylineno);
 }
-
-// TPC: If (Se)
