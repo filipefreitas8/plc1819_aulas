@@ -108,7 +108,7 @@ Se              : SE '(' ExpB ')' ENTAO Instrucoes FSE { asprintf(&$$, "%sJZ FSE
 
 ExpB            : Exp             { $$ = $1; }
                 | Exp '=' '=' Exp { asprintf(&$$, "%s%sEQUAL\n", $1, $4); } // Deixa no topo da pilha o valor 1 sse $1 == $2
-                | Exp '!' '=' Exp { asprintf(&$$, "%s%sEQUAL\nNOT\N", $1, $4); } // Deixa no topo da pilha o valor 1 sse $1 != $2
+                | Exp '!' '=' Exp { asprintf(&$$, "%s%sEQUAL\nNOT\n", $1, $4); } // Deixa no topo da pilha o valor 1 sse $1 != $2
                 | Exp '>' Exp     { asprintf(&$$, "%s%sSUP\n", $1, $3); } // $1 > $3
                 | Exp '<' Exp     { asprintf(&$$, "%s%sINF\n", $1, $3); } // $1 < $3
                 | Exp '>' '=' Exp { asprintf(&$$, "%s%sSUPEQ\n", $1, $4); } // $1 >= $4
