@@ -15,7 +15,7 @@ int symbolTable[26];
 
 int proxAddress = 0;
 
-int proxIfName = 0;
+int proxLabelName = 0;
 %}
 
 %union { int numero; char *texto; }
@@ -23,7 +23,7 @@ int proxIfName = 0;
 %token <texto>id
 %token <numero>num
 
-%token INTEIRO ERRO LER ESCREVER SE ENTAO SENAO FSE
+%token INTEIRO ERRO LER ESCREVER SE ENTAO SENAO FSE ENQUANTO FENQUANTO
 
 %type <texto>Programa
 %type <texto>DCLVariaveis
@@ -35,6 +35,7 @@ int proxIfName = 0;
 %type <texto>Output
 %type <texto>Atribuicao
 %type <texto>Se
+%type <texto>Enquanto
 
 %type <texto>ExpB
 %type <texto>Exp
@@ -79,6 +80,7 @@ Instrucao       : Input { $$ = $1; }
                 | Output { $$ = $1; }
                 | Atribuicao { $$ = $1; }
                 | Se { $$ = $1; }
+                | Enquanto { $$ = $1; }
                 ; 
 
 Input           : LER '(' id ')' {
@@ -89,6 +91,7 @@ Input           : LER '(' id ')' {
         asprintf(&$$, "READ\nATOI\nSTOREG %d\n", symbolTable[$3[0] - 'A']);
     }
 }
+                ;
 
 Output          : ESCREVER '(' ExpB ')' { asprintf(&$$, "%sWRITEI\n", $3); }
                 ;
@@ -101,9 +104,13 @@ Atribuicao      : id '=' ExpB {
         asprintf(&$$, "%sSTOREG %d\n", $3, symbolTable[$1[0] - 'A']);
     }
 }
+                ;
 
-Se              : SE '(' ExpB ')' ENTAO Instrucoes FSE { asprintf(&$$, "%sJZ FSE%d\n%FSE%d\: NOP\n", $3, proxIfName, $6, proxIfName); proxIfName++; }
-                | SE '(' ExpB ')' ENTAO Instrucoes SENAO Instrucoes FSE { asprintf(&$$, "%sJZ SENAO%d\n%sJUMP FSE%d\nSENAO%d\: NOP\n%sFSE%d\: NOP\n", $3, proxIfName, $6, proxIfName, proxIfName, $8, proxIfName); proxIfName++; }
+Se              : SE '(' ExpB ')' ENTAO Instrucoes FSE { asprintf(&$$, "%sJZ FSE%d\n%sFSE%d: NOP\n", $3, proxLabelName, $6, proxLabelName); proxLabelName++; }
+                | SE '(' ExpB ')' ENTAO Instrucoes SENAO Instrucoes FSE { asprintf(&$$, "%sJZ SENAO%d\n%sJUMP FSE%d\nSENAO%d: NOP\n%sFSE%d: NOP\n", $3, proxLabelName, $6, proxLabelName, proxLabelName, $8, proxLabelName); proxLabelName++; }
+                ;
+
+Enquanto        : ENQUANTO '(' ExpB ')' ENTAO Instrucoes FENQUANTO { asprintf(&$$, "ENQUANTO%d: NOP\n%sJZ FENQUANTO%d\n%sJUMP ENQUANTO%d\nFENQUANTO%d: NOP\n", proxLabelName, $3, proxLabelName, $6, proxLabelName, proxLabelName); proxLabelName++; }
                 ;
 
 ExpB            : Exp             { $$ = $1; }
@@ -118,13 +125,13 @@ ExpB            : Exp             { $$ = $1; }
 Exp             : Termo         { $$ = $1; }
                 | Exp '+' Termo { asprintf(&$$, "%s%sADD\n", $1, $3);  }
                 | Exp '-' Termo { asprintf(&$$, "%s%sSUB\n", $1, $3);  }
-                | Exp '|' Termo { asprintf(&$$, "%s%sADD\n", $1, $3); }
+                | Exp '|' Termo { asprintf(&$$, "%s%sADD\n", $1, $3);  }
                 ;
 
 Termo           : Fator           { $$ = $1; }
                 | Termo '*' Fator { asprintf(&$$, "%s%sMUL\n", $1, $3);  }
                 | Termo '/' Fator { asprintf(&$$, "%s%sDIV\n", $1, $3);  }
-                | Termo '&' Fator { asprintf(&$$, "%s%sMUL\n", $1, $3); }
+                | Termo '&' Fator { asprintf(&$$, "%s%sMUL\n", $1, $3);  }
                 ;
 
 Fator           : Constante { $$ = $1; }

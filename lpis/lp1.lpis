@@ -1,15 +1,10 @@
 base = 1  : Inteiro
 res  = 0  : Inteiro
 ;
-se(base == 0)
+se(base == 1)
 entao
-    se(res == 1)
-    entao
-        escrever(2)
-    senao
-        escrever(1)
-    fse
+    base = base + 1
 senao
-    escrever(0)
+    base = base - 1
 fse
 .
